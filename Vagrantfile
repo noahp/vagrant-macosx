@@ -18,7 +18,11 @@ Vagrant.configure("2") do |config|
         virtualbox.memory = 4096
         virtualbox.cpus = 2
         # Show gui, incl. some power
-        virtualbox.gui = true
+        virtualbox.gui = false # true
+
+        # disable usb 3
+        # virtualbox.customize ["modifyvm", :id, "--usb", "on"]
+        virtualbox.customize ["modifyvm", :id, "--usbxhci", "off"]
 
         # Some needed OSX configs
         virtualbox.customize ["modifyvm", :id, "--cpuid-set", "00000001", "000106e5", "00100800", "0098e3fd", "bfebfbff"]
